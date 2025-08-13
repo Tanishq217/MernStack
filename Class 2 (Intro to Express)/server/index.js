@@ -4,6 +4,7 @@ const express = require('express') ;
 
 const app = express() ; // Calling the express ! 
 
+app.use(express.json()) ; // Middleware to parse JSON data from request body
 // we can use anything 
 
 // app.get // app.get('/path', (req, res) => { ... })
@@ -50,6 +51,49 @@ app.get('/courses/:id' , (req , res) =>{
   // res.send(courses)
 
   res.send(courses.find(course => course.id === parseInt(req.params.id))) // we can use parseInt to convert string to number
+})
+
+
+
+
+// CREATE A COURSE 
+
+// >> POST 
+
+// Using the post >> Uisng POSTMAN > API TESTING 
+app.post ('/courses' , (req , res) => {
+  // Create the Object 
+
+  let course = {
+    id : req.body.id, // we can use body-parser to get the body data
+    name : req.body.name // we can use body-parser to get the body data
+  }
+
+  // Push the Object to the courses array
+  courses.push(course) 
+  res.send(courses) // send the course object as response
+})
+
+
+
+
+// Update a resource ! 
+// Changing name for Express.js Fundamentals
+
+// Using a PUT method !
+app.put('/courses/:id' , (req , res) => {
+  // Find the course by ID 
+
+  let course = courses.find(course => course.id === parseInt(req.params.id)) ;
+
+  if (!course) {
+    return res.status(404).send('Course not found') // If course not found, send 404 status
+  }
+
+  // Update the course name 
+  course.name = req.body.name ; // we can use body-parser to get the body data
+
+  res.send(course)
 })
 
 app.listen (8001 , () => {
