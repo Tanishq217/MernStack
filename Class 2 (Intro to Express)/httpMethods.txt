@@ -1,0 +1,12 @@
+REST API 
+
+>> HTTP Methods 
+
+1. Read -> get 
+2. Create -> post 
+3. Updates -> put , patch 
+4. Delete -> delete 
+
+
+>> HTTP Status Codes  
+

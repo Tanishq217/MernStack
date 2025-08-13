@@ -22,10 +22,11 @@ const myServer = http.createServer((req, res) => { // server created > default r
     // res.end('Home Page Data')
     // Giving HTML data to the browser 
     res.end
-    break; 
+    break;
 
     case '/about':
-    res.end('About Page Data')
+    res.end('About Page Data') // we can put HTML data here // or website data
+    // Frame Work >> EXPRESS > help to create server site > ex;> API's ! 
     break;
 
     case '/contact':
